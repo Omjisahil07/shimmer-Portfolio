@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
