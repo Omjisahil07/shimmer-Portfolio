@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, User, Briefcase, FileText, Mail, Twitter, Linkedin, Youtube, Github } from 'lucide-react';
+import { Home, User, Briefcase, FileText, Mail, Twitter, Linkedin, Youtube, Github, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-type NavItem = {
+export type NavItem = {
   label: string;
   path: string;
   icon: React.ReactNode;
@@ -15,7 +16,7 @@ type SocialItem = {
   icon: React.ReactNode;
 };
 
-const navItems: NavItem[] = [
+export const navItems: NavItem[] = [
   { label: 'Home', path: '/', icon: <Home size={18} /> },
   { label: 'About', path: '/about', icon: <User size={18} /> },
   { label: 'Projects', path: '/projects', icon: <Briefcase size={18} /> },
@@ -85,6 +86,15 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
+        
+        <div className="mt-6">
+          <Button className="w-full" variant="outline" size="sm" asChild>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <ExternalLink size={16} />
+              Read Resume
+            </a>
+          </Button>
+        </div>
       </div>
     </aside>
   );
