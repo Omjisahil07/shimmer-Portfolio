@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -21,24 +20,23 @@ const MobileNav = () => {
             <HoverCardTrigger asChild>
               <div className="overflow-hidden cursor-pointer transition-transform hover:scale-105">
                 <Avatar className="w-8 h-8 border-2 border-sidebar-primary">
-                  <AvatarImage src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" alt="John Doe" />
+                  <AvatarImage 
+                    src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
+                    alt="John Doe" 
+                    loading="eager" 
+                  />
                   <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
               </div>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 p-0 backdrop-blur-xl bg-background/70 border border-sidebar-primary animate-scale-in shadow-xl">
-              <div className="relative overflow-hidden rounded-xl">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20 z-10"></div>
+            <HoverCardContent className="w-[500px] max-w-[90vw] p-0 overflow-hidden backdrop-blur-xl bg-background/60 border-2 border-blue-500 shadow-2xl animate-scale-in">
+              <div className="relative w-full h-full">
                 <img 
                   src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
                   alt="John Doe" 
-                  className="w-full h-auto object-cover transform transition-transform hover:scale-105 duration-500"
+                  className="w-full h-auto object-cover rounded-lg"
                   loading="eager"
                 />
-              </div>
-              <div className="p-4">
-                <h4 className="font-medium">John Doe</h4>
-                <p className="text-sm text-muted-foreground">Full-Stack Developer</p>
               </div>
             </HoverCardContent>
           </HoverCard>

@@ -27,19 +27,14 @@ const Home = () => {
               <HoverCardTrigger asChild>
                 <span className="text-3xl cursor-pointer hover:scale-110 transition-transform">👋</span>
               </HoverCardTrigger>
-              <HoverCardContent className="p-0 backdrop-blur-xl bg-background/70 border border-sidebar-primary shadow-xl">
-                <div className="relative overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20 z-10"></div>
+              <HoverCardContent className="w-[500px] max-w-[90vw] p-0 overflow-hidden backdrop-blur-xl bg-background/60 border-2 border-blue-500 shadow-2xl animate-scale-in">
+                <div className="relative w-full h-full">
                   <img 
                     src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
                     alt="John Doe" 
-                    className="w-full h-auto object-cover transform transition-transform hover:scale-105 duration-500"
+                    className="w-full h-auto object-cover rounded-lg"
                     loading="eager"
                   />
-                </div>
-                <div className="p-4">
-                  <h4 className="font-medium">Hello there!</h4>
-                  <p className="text-sm text-muted-foreground">Nice to meet you</p>
                 </div>
               </HoverCardContent>
             </HoverCard>
