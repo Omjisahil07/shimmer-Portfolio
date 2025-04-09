@@ -26,14 +26,17 @@ const Home = () => {
           <div className="flex items-center gap-2 mb-4">
             <HoverCard>
               <HoverCardTrigger asChild>
-                <span className="text-3xl cursor-pointer">👋</span>
+                <span className="text-3xl cursor-pointer hover:scale-110 transition-transform">👋</span>
               </HoverCardTrigger>
-              <HoverCardContent className="p-0">
-                <img 
-                  src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
-                  alt="John Doe" 
-                  className="w-full h-auto rounded-t-md"
-                />
+              <HoverCardContent className="p-0 backdrop-blur-lg bg-background/70 border border-sidebar-primary animate-scale-in">
+                <div className="relative overflow-hidden rounded-t-md">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20 z-10"></div>
+                  <img 
+                    src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
+                    alt="John Doe" 
+                    className="w-full h-auto object-cover transform transition-transform hover:scale-105 duration-500"
+                  />
+                </div>
                 <div className="p-3">
                   <h4 className="font-medium">Hello there!</h4>
                   <p className="text-sm text-muted-foreground">Nice to meet you</p>
