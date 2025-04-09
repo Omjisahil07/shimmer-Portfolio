@@ -2,15 +2,23 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { projects } from '@/data/projects';
 
 const Home = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  
+  const recentProjects = projects.slice(0, 2);
+  
+  const goToProjectDetail = (projectId: number) => {
+    navigate(`/project/${projectId}`);
+  };
   
   return (
-    <Layout title="Home">
+    <Layout>
       <div className="max-w-3xl">
         <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
@@ -47,11 +55,10 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {recentProjects.map((project) => (
-              <Link 
+              <div 
                 key={project.id} 
-                to={`/projects`} 
-                state={{ projectId: project.id }}
-                className="project-card hover:scale-[1.03] transition-all duration-300"
+                onClick={() => goToProjectDetail(project.id)}
+                className="project-card hover:scale-[1.03] transition-all duration-300 cursor-pointer"
               >
                 <img 
                   src={project.image} 
@@ -67,7 +74,7 @@ const Home = () => {
                     ))}
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           
@@ -84,22 +91,5 @@ const Home = () => {
     </Layout>
   );
 };
-
-const recentProjects = [
-  {
-    id: 1,
-    title: 'Acclernity',
-    description: 'A design and development studio that focuses on building quality apps.',
-    image: '/lovable-uploads/f323c7cd-7da3-4dab-bbc1-56b6a7514136.png',
-    technologies: ['React', 'Tailwind']
-  },
-  {
-    id: 2,
-    title: 'Algochurn',
-    description: 'Practice for technical interviews with hands on coding challenges.',
-    image: '/lovable-uploads/d67cefad-3e91-4b5a-b8b6-d8f11ea65953.png',
-    technologies: ['Next.js', 'TypeScript']
-  },
-];
 
 export default Home;

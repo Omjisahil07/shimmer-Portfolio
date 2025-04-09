@@ -8,10 +8,9 @@ import MobileNav from './MobileNav';
 
 type LayoutProps = {
   children: React.ReactNode;
-  title: string;
 };
 
-const Layout = ({ children, title }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   const isMobile = useIsMobile();
   
   return (
@@ -20,8 +19,7 @@ const Layout = ({ children, title }: LayoutProps) => {
       {isMobile && <MobileNav />}
       
       <main className={`${!isMobile ? 'ml-64' : 'ml-0'} min-h-screen flex-1 p-4 md:p-8`}>
-        <header className="flex justify-between items-center mb-6 md:mb-10 animate-fade-in">
-          <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
+        <header className="flex justify-end items-center mb-6 md:mb-10 animate-fade-in">
           <ThemeToggle />
         </header>
         
