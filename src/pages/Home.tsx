@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -24,20 +23,21 @@ const Home = () => {
       <div className="max-w-3xl">
         <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
-            <HoverCard>
+            <HoverCard openDelay={100} closeDelay={200}>
               <HoverCardTrigger asChild>
                 <span className="text-3xl cursor-pointer hover:scale-110 transition-transform">👋</span>
               </HoverCardTrigger>
-              <HoverCardContent className="p-0 backdrop-blur-lg bg-background/70 border border-sidebar-primary animate-scale-in">
-                <div className="relative overflow-hidden rounded-t-md">
+              <HoverCardContent className="p-0 backdrop-blur-xl bg-background/70 border border-sidebar-primary shadow-xl">
+                <div className="relative overflow-hidden rounded-xl">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/20 z-10"></div>
                   <img 
                     src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
                     alt="John Doe" 
                     className="w-full h-auto object-cover transform transition-transform hover:scale-105 duration-500"
+                    loading="eager"
                   />
                 </div>
-                <div className="p-3">
+                <div className="p-4">
                   <h4 className="font-medium">Hello there!</h4>
                   <p className="text-sm text-muted-foreground">Nice to meet you</p>
                 </div>
