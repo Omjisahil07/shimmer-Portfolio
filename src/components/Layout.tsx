@@ -8,9 +8,10 @@ import MobileNav from './MobileNav';
 
 type LayoutProps = {
   children: React.ReactNode;
+  title?: string; // Added title as an optional prop
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, title }: LayoutProps) => {
   const isMobile = useIsMobile();
   
   return (
