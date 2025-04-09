@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { projects } from '@/data/projects';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Home = () => {
   const isMobile = useIsMobile();
@@ -22,7 +24,22 @@ const Home = () => {
       <div className="max-w-3xl">
         <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-3xl">👋</span>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <span className="text-3xl cursor-pointer">👋</span>
+              </HoverCardTrigger>
+              <HoverCardContent className="p-0">
+                <img 
+                  src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
+                  alt="John Doe" 
+                  className="w-full h-auto rounded-t-md"
+                />
+                <div className="p-3">
+                  <h4 className="font-medium">Hello there!</h4>
+                  <p className="text-sm text-muted-foreground">Nice to meet you</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
             <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello there! I'm John</h1>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6">

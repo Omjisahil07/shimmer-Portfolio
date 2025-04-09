@@ -3,6 +3,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, User, Briefcase, FileText, Mail, Twitter, Linkedin, Youtube, Github, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 export type NavItem = {
   label: string;
@@ -38,13 +40,27 @@ const Sidebar = () => {
     <aside className="w-64 h-screen bg-sidebar fixed left-0 top-0 border-r border-sidebar-border p-6 flex flex-col animate-slide-in">
       <div className="mb-8">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-sidebar-primary">
-            <img 
-              src="/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png" 
-              alt="John Doe" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-sidebar-primary cursor-pointer transition-transform hover:scale-105">
+                <Avatar className="w-12 h-12">
+                  <AvatarImage src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" alt="John Doe" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+              </div>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-80 p-0">
+              <img 
+                src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
+                alt="John Doe" 
+                className="w-full h-auto rounded-md"
+              />
+              <div className="p-3">
+                <h4 className="font-medium">John Doe</h4>
+                <p className="text-sm text-muted-foreground">Full-Stack Developer</p>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
           <div>
             <h3 className="font-bold text-base">John Doe</h3>
             <p className="text-xs text-muted-foreground">Developer</p>
