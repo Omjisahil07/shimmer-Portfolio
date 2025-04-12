@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -5,8 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { projects } from '@/data/projects';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Home = () => {
   const isMobile = useIsMobile();
@@ -23,21 +22,7 @@ const Home = () => {
       <div className="max-w-3xl">
         <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
-            <HoverCard openDelay={100} closeDelay={200}>
-              <HoverCardTrigger asChild>
-                <span className="text-3xl cursor-pointer hover:scale-110 transition-transform">👋</span>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-[500px] max-w-[90vw] p-0 overflow-hidden backdrop-blur-xl bg-background/60 border-2 border-blue-500 shadow-2xl animate-scale-in">
-                <div className="relative w-full h-full">
-                  <img 
-                    src="/lovable-uploads/9c5affaf-f4f1-4a09-b25c-bcbc1c8eaa3e.png" 
-                    alt="John Doe" 
-                    className="w-full h-auto object-cover rounded-lg"
-                    loading="eager"
-                  />
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+            <span className="text-3xl">👋</span>
             <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello there! I'm John</h1>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6">
