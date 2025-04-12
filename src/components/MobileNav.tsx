@@ -4,10 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { navItems } from './Sidebar';
+import ProfileImageDialog from './ProfileImageDialog';
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const location = useLocation();
+  const profileImageSrc = "/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png";
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -15,11 +18,15 @@ const MobileNav = () => {
     <>
       <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b p-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-sidebar-primary">
+          <div 
+            className="w-8 h-8 rounded-full overflow-hidden border-2 border-sidebar-primary cursor-pointer"
+            onClick={() => setImageDialogOpen(true)}
+          >
             <img 
-              src="/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png" 
+              src={profileImageSrc}
               alt="John Doe" 
               className="w-full h-full object-cover"
+              loading="eager"
             />
           </div>
           <div>
@@ -58,6 +65,12 @@ const MobileNav = () => {
         </div>
       )}
       <div className="h-16"></div> {/* Spacer for fixed header */}
+
+      <ProfileImageDialog 
+        open={imageDialogOpen} 
+        onOpenChange={setImageDialogOpen} 
+        imageSrc={profileImageSrc}
+      />
     </>
   );
 };

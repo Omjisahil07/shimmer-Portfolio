@@ -1,15 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { projects } from '@/data/projects';
+import ProfileImageDialog from '@/components/ProfileImageDialog';
 
 const Home = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
+  const profileImageSrc = "/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png";
   
   const recentProjects = projects.slice(0, 2);
   
@@ -22,7 +25,12 @@ const Home = () => {
       <div className="max-w-3xl">
         <div className="mb-10 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-3xl">👋</span>
+            <span 
+              className="text-3xl cursor-pointer hover:scale-110 transition-transform"
+              onClick={() => setImageDialogOpen(true)}
+            >
+              👋
+            </span>
             <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello there! I'm John</h1>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6">
@@ -88,6 +96,12 @@ const Home = () => {
           </div>
         </section>
       </div>
+
+      <ProfileImageDialog 
+        open={imageDialogOpen} 
+        onOpenChange={setImageDialogOpen} 
+        imageSrc={profileImageSrc}
+      />
     </Layout>
   );
 };
