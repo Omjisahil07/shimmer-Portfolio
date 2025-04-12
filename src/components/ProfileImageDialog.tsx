@@ -5,6 +5,7 @@ import {
   Dialog,
   DialogContent,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
@@ -25,7 +26,8 @@ const ProfileImageDialog = ({
 }: ProfileImageDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md p-0 overflow-hidden rounded-xl bg-white/10 backdrop-blur-md animate-scale-in">
+      <DialogContent className="max-w-md p-0 overflow-hidden rounded-xl bg-black/80 dark:bg-black/90 backdrop-blur-md animate-scale-in">
+        <DialogTitle className="sr-only">Profile Image</DialogTitle>
         <div className="relative w-full flex flex-col items-center">
           <div className="w-full aspect-square">
             <Avatar className="w-full h-full rounded-xl shadow-lg">
@@ -39,11 +41,11 @@ const ProfileImageDialog = ({
             </Avatar>
           </div>
           
-          <div className="absolute bottom-4 left-0 right-0 text-center p-2 bg-black/40 backdrop-blur-sm animate-fade-in">
+          <div className="absolute bottom-4 left-0 right-0 text-center p-2 bg-black/50 dark:bg-black/70 backdrop-blur-sm animate-fade-in">
             <h3 className="text-white font-medium text-lg">{name}</h3>
           </div>
           
-          <DialogClose className="absolute top-2 right-2 rounded-full bg-black/50 p-1.5 text-white hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200">
+          <DialogClose className="absolute top-2 right-2 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200">
             <X size={16} />
             <span className="sr-only">Close</span>
           </DialogClose>
