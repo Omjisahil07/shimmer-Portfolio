@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -70,6 +69,7 @@ const MobileNav = () => {
         open={imageDialogOpen} 
         onOpenChange={setImageDialogOpen} 
         imageSrc={profileImageSrc}
+        name="John Doe"
       />
     </>
   );

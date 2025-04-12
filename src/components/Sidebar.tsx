@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, User, Briefcase, FileText, Mail, Twitter, Linkedin, Youtube, Github, ExternalLink } from 'lucide-react';
@@ -110,6 +109,7 @@ const Sidebar = () => {
         open={imageDialogOpen} 
         onOpenChange={setImageDialogOpen} 
         imageSrc={profileImageSrc}
+        name="John Doe"
       />
     </>
   );
