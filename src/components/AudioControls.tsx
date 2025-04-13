@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Volume2, VolumeX, Mic, MicOff } from 'lucide-react';
+import { Volume2, VolumeX, Mic, MicOff, Music, Music2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAudio } from '@/hooks/use-audio';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,16 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { playSound } from '@/utils/sounds';
 
 const AudioControls = () => {
-  const { soundsEnabled, narrationEnabled, volume, toggleSounds, toggleNarration, setVolume } = useAudio();
+  const { 
+    soundsEnabled, 
+    narrationEnabled, 
+    ambientEnabled, 
+    volume, 
+    toggleSounds, 
+    toggleNarration, 
+    toggleAmbient, 
+    setVolume 
+  } = useAudio();
 
   const handleToggleSounds = () => {
     toggleSounds();
@@ -61,7 +70,7 @@ const AudioControls = () => {
             </div>
             
             <div className="flex justify-between items-center">
-              <span className="text-sm">Narration</span>
+              <span className="text-sm">Voice Narration</span>
               <Button 
                 variant={narrationEnabled ? "default" : "outline"}
                 size="sm"
@@ -73,6 +82,22 @@ const AudioControls = () => {
               >
                 {narrationEnabled ? <Mic size={16} /> : <MicOff size={16} />}
                 {narrationEnabled ? "On" : "Off"}
+              </Button>
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <span className="text-sm">Ambient Sounds</span>
+              <Button 
+                variant={ambientEnabled ? "default" : "outline"}
+                size="sm"
+                onClick={() => {
+                  toggleAmbient();
+                  if (soundsEnabled) playSound('switch');
+                }}
+                className="gap-2"
+              >
+                {ambientEnabled ? <Music size={16} /> : <Music2 size={16} />}
+                {ambientEnabled ? "On" : "Off"}
               </Button>
             </div>
             

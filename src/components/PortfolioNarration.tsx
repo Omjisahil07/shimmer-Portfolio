@@ -1,33 +1,33 @@
 
 import React, { useEffect, useState } from 'react';
-import { Howl } from 'howler';
 import { useAudio } from '@/hooks/use-audio';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, SkipForward } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { speakText } from '@/utils/sounds';
 
-// Map routes to narration audio files
-const narrations: Record<string, {src: string, title: string}> = {
+// Map routes to narration text content
+const narrations: Record<string, {text: string, title: string}> = {
   '/': {
-    src: '/narrations/home.mp3',
+    text: 'Welcome to my portfolio website. Here you can explore my projects, read my articles, and learn more about my background and skills. Feel free to navigate around using the menu or contact me directly through the contact page.',
     title: 'Welcome to My Portfolio'
   },
   '/about': {
-    src: '/narrations/about.mp3',
+    text: 'I\'m a passionate developer with extensive experience in web and mobile development. I enjoy creating intuitive user interfaces and solving complex problems with elegant solutions. My background includes work with various technologies and frameworks across multiple industries.',
     title: 'About Me'
   },
   '/projects': {
-    src: '/narrations/projects.mp3',
+    text: 'Here are some of the projects I\'ve worked on. Each one showcases different skills and technologies I\'ve mastered throughout my career. Click on any project to view more details about its implementation and the challenges I overcame.',
     title: 'My Projects'
   },
   '/articles': {
-    src: '/narrations/articles.mp3',
+    text: 'These are articles I\'ve written on various technical topics. I enjoy sharing my knowledge and insights with the community, covering subjects from beginner tutorials to advanced implementation strategies.',
     title: 'My Articles'
   },
   '/contact': {
-    src: '/narrations/contact.mp3',
+    text: 'Feel free to reach out to me using the contact form below. I\'m open to freelance opportunities, collaborations, or just connecting with other professionals in the industry.',
     title: 'Get in Touch'
   }
 };
@@ -35,119 +35,150 @@ const narrations: Record<string, {src: string, title: string}> = {
 const PortfolioNarration = () => {
   const location = useLocation();
   const { narrationEnabled, volume } = useAudio();
-  const [sound, setSound] = useState<Howl | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isNarrationAvailable, setIsNarrationAvailable] = useState(true);
+  const [progressInterval, setProgressInterval] = useState<number | null>(null);
+  const [duration, setDuration] = useState(15); // Approximate duration in seconds
+  const [currentNarration, setCurrentNarration] = useState<{text: string, title: string} | null>(null);
+  const [speechController, setSpeechController] = useState<{stop: () => void} | null>(null);
   
-  // Check if the narration file exists
+  // Update current narration when route changes
   useEffect(() => {
-    const checkNarrationExists = async () => {
-      const currentNarration = narrations[location.pathname];
-      if (!currentNarration) {
-        setIsNarrationAvailable(false);
-        return;
-      }
-      
-      try {
-        const response = await fetch(currentNarration.src, { method: 'HEAD' });
-        setIsNarrationAvailable(response.ok);
-      } catch (e) {
-        setIsNarrationAvailable(false);
-      }
-    };
+    const newNarration = narrations[location.pathname];
+    setCurrentNarration(newNarration || null);
     
-    checkNarrationExists();
+    // Reset progress
+    setProgress(0);
+    setIsPlaying(false);
+    
+    // Stop any previous narration
+    if (speechController) {
+      speechController.stop();
+      setSpeechController(null);
+    }
+    
+    // Clear previous interval
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      setProgressInterval(null);
+    }
+    
+    // Estimate duration based on text length (approx 100 chars per 5 seconds)
+    if (newNarration) {
+      const estimatedDuration = Math.max(5, Math.ceil(newNarration.text.length / 20));
+      setDuration(estimatedDuration);
+    }
   }, [location.pathname]);
   
-  // Set up and clean up audio on route change or when narration is toggled
+  // Start narration when enabled or route changes
   useEffect(() => {
-    if (!narrationEnabled || !isNarrationAvailable) {
-      if (sound) {
-        sound.stop();
-        setSound(null);
-        setIsPlaying(false);
-      }
-      return;
+    if (narrationEnabled && currentNarration && !isPlaying) {
+      startNarration();
     }
-
-    const currentNarration = narrations[location.pathname];
-    if (!currentNarration) return;
-
-    // Clean up previous audio
-    if (sound) {
-      sound.stop();
-      setSound(null);
-    }
-
-    // Create new audio for current page
-    const newSound = new Howl({
-      src: [currentNarration.src],
-      volume: volume,
-      html5: true,
-      onplay: () => setIsPlaying(true),
-      onpause: () => setIsPlaying(false),
-      onstop: () => setIsPlaying(false),
-      onend: () => {
-        setIsPlaying(false);
-        setProgress(100);
-      },
-      onload: () => {
-        setDuration(newSound.duration());
-      },
-      onloaderror: () => {
-        console.warn(`Failed to load narration: ${currentNarration.src}`);
-        setIsNarrationAvailable(false);
-      }
-    });
-
-    setSound(newSound);
-    setProgress(0);
-
+    
     return () => {
-      newSound.stop();
+      // Clean up on unmount
+      if (speechController) {
+        speechController.stop();
+      }
+      
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
     };
-  }, [location.pathname, narrationEnabled, isNarrationAvailable, volume]);
-
+  }, [narrationEnabled, currentNarration]);
+  
   // Update volume when it changes
   useEffect(() => {
-    if (sound) {
-      sound.volume(volume);
+    // Web Speech API will use the new volume on next narration
+  }, [volume]);
+  
+  const startNarration = () => {
+    if (!currentNarration || !narrationEnabled) return;
+    
+    // Stop previous narration and interval
+    if (speechController) {
+      speechController.stop();
     }
-  }, [volume, sound]);
-
-  // Update progress bar during playback
-  useEffect(() => {
-    if (!sound || !isPlaying) return;
-
-    const interval = setInterval(() => {
-      const currentTime = sound.seek();
-      if (typeof currentTime === 'number' && duration > 0) {
-        setProgress((currentTime / duration) * 100);
+    
+    if (progressInterval) {
+      clearInterval(progressInterval);
+    }
+    
+    // Reset progress if completed
+    if (progress >= 100) {
+      setProgress(0);
+    }
+    
+    // Start new narration
+    const controller = speakText(
+      currentNarration.text,
+      volume,
+      () => {
+        setIsPlaying(true);
+        
+        // Start progress interval
+        const interval = window.setInterval(() => {
+          setProgress(prev => {
+            if (prev >= 100) {
+              clearInterval(interval);
+              return 100;
+            }
+            return prev + (100 / duration / 10); // Update every 100ms
+          });
+        }, 100);
+        
+        setProgressInterval(interval);
+      },
+      () => {
+        setIsPlaying(false);
+        setProgress(100);
+        if (progressInterval) {
+          clearInterval(progressInterval);
+          setProgressInterval(null);
+        }
       }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [sound, isPlaying, duration]);
+    );
+    
+    setSpeechController(controller);
+  };
 
   const togglePlayback = () => {
-    if (!sound) return;
     if (isPlaying) {
-      sound.pause();
+      // Pause narration
+      if (speechController) {
+        speechController.stop();
+        setSpeechController(null);
+      }
+      
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        setProgressInterval(null);
+      }
+      
+      setIsPlaying(false);
     } else {
-      sound.play();
+      // Resume/start narration
+      startNarration();
     }
   };
 
   const skipNarration = () => {
-    if (!sound) return;
-    sound.stop();
+    if (speechController) {
+      speechController.stop();
+      setSpeechController(null);
+    }
+    
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      setProgressInterval(null);
+    }
+    
     setIsPlaying(false);
     setProgress(100);
   };
 
-  if (!narrationEnabled || !narrations[location.pathname] || !isNarrationAvailable) return null;
+  if (!narrationEnabled || !currentNarration) return null;
 
   return (
     <AnimatePresence>
@@ -159,7 +190,7 @@ const PortfolioNarration = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="flex items-center justify-between mb-2">
-          <h4 className="text-sm font-medium truncate">{narrations[location.pathname]?.title}</h4>
+          <h4 className="text-sm font-medium truncate">{currentNarration.title}</h4>
           <div className="flex gap-1">
             <Button 
               variant="ghost" 
