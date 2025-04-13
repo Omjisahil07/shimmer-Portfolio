@@ -39,10 +39,31 @@ const PortfolioNarration = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isNarrationAvailable, setIsNarrationAvailable] = useState(true);
+  
+  // Check if the narration file exists
+  useEffect(() => {
+    const checkNarrationExists = async () => {
+      const currentNarration = narrations[location.pathname];
+      if (!currentNarration) {
+        setIsNarrationAvailable(false);
+        return;
+      }
+      
+      try {
+        const response = await fetch(currentNarration.src, { method: 'HEAD' });
+        setIsNarrationAvailable(response.ok);
+      } catch (e) {
+        setIsNarrationAvailable(false);
+      }
+    };
+    
+    checkNarrationExists();
+  }, [location.pathname]);
   
   // Set up and clean up audio on route change or when narration is toggled
   useEffect(() => {
-    if (!narrationEnabled) {
+    if (!narrationEnabled || !isNarrationAvailable) {
       if (sound) {
         sound.stop();
         setSound(null);
@@ -74,6 +95,10 @@ const PortfolioNarration = () => {
       },
       onload: () => {
         setDuration(newSound.duration());
+      },
+      onloaderror: () => {
+        console.warn(`Failed to load narration: ${currentNarration.src}`);
+        setIsNarrationAvailable(false);
       }
     });
 
@@ -83,7 +108,7 @@ const PortfolioNarration = () => {
     return () => {
       newSound.stop();
     };
-  }, [location.pathname, narrationEnabled]);
+  }, [location.pathname, narrationEnabled, isNarrationAvailable, volume]);
 
   // Update volume when it changes
   useEffect(() => {
@@ -122,7 +147,7 @@ const PortfolioNarration = () => {
     setProgress(100);
   };
 
-  if (!narrationEnabled || !narrations[location.pathname]) return null;
+  if (!narrationEnabled || !narrations[location.pathname] || !isNarrationAvailable) return null;
 
   return (
     <AnimatePresence>

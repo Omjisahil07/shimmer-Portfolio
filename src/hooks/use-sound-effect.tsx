@@ -1,9 +1,7 @@
 
 import { useCallback } from 'react';
 import { useAudio } from './use-audio';
-import { playSound } from '@/utils/sounds';
-
-type SoundType = 'click' | 'hover' | 'switch' | 'success';
+import { playSound, SoundType } from '@/utils/sounds';
 
 type SoundEffectOptions = {
   clickSound?: SoundType;
