@@ -3,9 +3,11 @@ import { useCallback } from 'react';
 import { useAudio } from './use-audio';
 import { playSound } from '@/utils/sounds';
 
+type SoundType = 'click' | 'hover' | 'switch' | 'success';
+
 type SoundEffectOptions = {
-  clickSound?: keyof typeof playSound;
-  hoverSound?: keyof typeof playSound;
+  clickSound?: SoundType;
+  hoverSound?: SoundType;
 };
 
 export const useSoundEffect = (options?: SoundEffectOptions) => {

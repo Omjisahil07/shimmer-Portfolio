@@ -21,8 +21,10 @@ export const sounds = {
   }),
 };
 
+export type SoundType = keyof typeof sounds;
+
 // Play a sound with optional volume override
-export const playSound = (sound: keyof typeof sounds, volumeOverride?: number) => {
+export const playSound = (sound: SoundType, volumeOverride?: number) => {
   const soundToPlay = sounds[sound];
   if (soundToPlay) {
     if (volumeOverride !== undefined) {
