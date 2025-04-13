@@ -7,7 +7,6 @@ import { ArrowRight, Briefcase } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { projects } from '@/data/projects';
 import ProfileImageDialog from '@/components/ProfileImageDialog';
-import TimelineJourney from '@/components/TimelineJourney';
 
 const Home = () => {
   const isMobile = useIsMobile();
@@ -55,9 +54,6 @@ const Home = () => {
             </Button>
           </div>
         </div>
-
-        {/* Timeline Journey Component */}
-        <TimelineJourney />
 
         <section className="animate-fade-in">
           <h2 className="section-title">
