@@ -16,10 +16,6 @@ import ArticleDetail from "@/pages/ArticleDetail";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
-// Import audio components
-import AudioControls from "@/components/AudioControls";
-import PortfolioNarration from "@/components/PortfolioNarration";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -39,8 +35,6 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <AudioControls />
-          <PortfolioNarration />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
