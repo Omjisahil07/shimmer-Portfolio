@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className={`${!isMobile ? 'ml-64' : 'ml-0'} border-t py-6 px-4 md:px-8 mt-auto`}>
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-sm text-muted-foreground">
-          © {currentYear} John Doe. All rights reserved.
+          © {currentYear} Sahil Tiwari. All rights reserved.
         </div>
         
         <div className="flex items-center gap-2 text-sm">
@@ -23,9 +23,9 @@ const Footer = () => {
         
         <div className="flex gap-3">
           <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
-            <a href="https://github.com/johndoe" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/sahil-1610" target="_blank" rel="noopener noreferrer">
               <Github size={16} />
-              <span className="hidden md:inline">View Source</span>
+              <span className="hidden md:inline">GitHub</span>
             </a>
           </Button>
           <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>

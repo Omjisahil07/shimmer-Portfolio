@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -31,15 +30,16 @@ const Home = () => {
             >
               👋
             </span>
-            <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello there! I'm John</h1>
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello! I'm Sahil</h1>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6">
-            I'm a full-stack developer that loves building products and web apps that 
-            can impact millions of lives.
+            I'm thrilled to have you here. I'm a software developer and this is my portfolio website. 
+            Here you'll know about my journey as a software developer.
           </p>
           <p className="text-md md:text-lg text-muted-foreground mb-8">
-            I'm a senior software engineer with 7 years of experience building scalable 
-            web apps that are performance optimized and good looking.
+            With 11 months of experience in web development, I specialize in the MERN Stack 
+            (MongoDB, Express.js, React.js, Next.js and Node.js). I'm passionate about creating 
+            efficient, user-friendly, and visually appealing web applications.
           </p>
           
           <div className="flex flex-wrap gap-4">
@@ -58,7 +58,7 @@ const Home = () => {
         <section className="animate-fade-in">
           <h2 className="section-title">
             <Briefcase size={24} className="text-primary" />
-            What I've been working on
+            Recent Projects
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -101,7 +101,7 @@ const Home = () => {
         open={imageDialogOpen} 
         onOpenChange={setImageDialogOpen} 
         imageSrc={profileImageSrc}
-        name="John Doe"
+        name="Sahil Tiwari"
       />
     </Layout>
   );

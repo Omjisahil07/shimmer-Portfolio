@@ -25,10 +25,21 @@ export const navItems: NavItem[] = [
 ];
 
 const socialItems: SocialItem[] = [
-  { label: 'Twitter', url: 'https://twitter.com', icon: <Twitter size={18} /> },
-  { label: 'LinkedIn', url: 'https://linkedin.com', icon: <Linkedin size={18} /> },
-  { label: 'YouTube', url: 'https://youtube.com', icon: <Youtube size={18} /> },
-  { label: 'GitHub', url: 'https://github.com', icon: <Github size={18} /> },
+  { 
+    label: 'Twitter', 
+    url: 'https://x.com/sahil_tiwa37698', 
+    icon: <Twitter size={18} /> 
+  },
+  { 
+    label: 'LinkedIn', 
+    url: 'https://www.linkedin.com/in/sahil-tiwari-8a166926b/', 
+    icon: <Linkedin size={18} /> 
+  },
+  { 
+    label: 'GitHub', 
+    url: 'https://github.com/sahil-1610', 
+    icon: <Github size={18} /> 
+  },
 ];
 
 const Sidebar = () => {
@@ -47,14 +58,14 @@ const Sidebar = () => {
             >
               <img 
                 src={profileImageSrc}
-                alt="John Doe" 
+                alt="Sahil Tiwari" 
                 className="w-full h-full object-cover"
                 loading="eager"
               />
             </div>
             <div>
-              <h3 className="font-bold text-base">John Doe</h3>
-              <p className="text-xs text-muted-foreground">Developer</p>
+              <h3 className="font-bold text-base">Sahil Tiwari</h3>
+              <p className="text-xs text-muted-foreground">Full Stack Developer</p>
             </div>
           </Link>
         </div>
@@ -109,7 +120,7 @@ const Sidebar = () => {
         open={imageDialogOpen} 
         onOpenChange={setImageDialogOpen} 
         imageSrc={profileImageSrc}
-        name="John Doe"
+        name="Sahil Tiwari"
       />
     </>
   );
