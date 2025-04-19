@@ -1,7 +1,6 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
-import { User, Code, Award, Target, Brain, Heart, Star, Briefcase, GraduationCap, Certificate, Tool, Users } from 'lucide-react';
+import { User, Code, Award, Target, Brain, Heart, Star, Briefcase, GraduationCap, Wrench, Users } from 'lucide-react';
 
 const About = () => {
   const personalInfo = {
@@ -113,7 +112,7 @@ const About = () => {
         {/* Certifications */}
         <div className="mb-12 animate-fade-in">
           <h2 className="text-xl font-semibold flex items-center gap-2 mb-6">
-            <Certificate className="text-primary" size={20} />
+            <Award className="text-primary" size={20} />
             Certifications
           </h2>
           {personalInfo.certifications.map((cert, index) => (
