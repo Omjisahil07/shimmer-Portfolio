@@ -1,9 +1,21 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
-import { User } from 'lucide-react';
+import { User, Code, Award, Target, Cpu, Brain, Heart, Star } from 'lucide-react';
 
 const About = () => {
+  const personalInfo = {
+    hobbies: ['Coding', 'Reading', 'Problem-solving', 'Hackathons'],
+    strengths: ['Persistent', 'Team Leader', 'Full-Stack Developer'],
+    weaknesses: ['Overthinking', 'Perfectionism'],
+    goals: ['Become a Cloud Computing Expert', 'Build impactful applications'],
+    programmingLanguages: ['JavaScript', 'Python'],
+    tools: ['Appwrite', 'MongoDB', 'React', 'Node.js'],
+    traits: ['Ambitious', 'Analytical', 'Curious'],
+    interests: ['Web Development', 'Cloud Computing', 'Open Source'],
+    achievements: ['HexCoder hackathon selection', 'Decode Cafe Club Tech Lead']
+  };
+
   return (
     <Layout title="About">
       <div className="max-w-3xl mx-auto">
@@ -12,68 +24,121 @@ const About = () => {
           About Me
         </h1>
         
-        <div className="grid md:grid-cols-4 gap-4 mb-8">
-          <img 
-            src="/lovable-uploads/06b2535b-f663-4ea6-b230-7ca7df11862c.png" 
-            alt="City at night" 
-            className="rounded-lg h-40 object-cover animate-fade-in"
-          />
-          <img 
-            src="/lovable-uploads/0991307e-857f-4b1f-8a96-330c161bdeae.png" 
-            alt="Hot air balloon" 
-            className="rounded-lg h-40 object-cover animate-fade-in delay-75"
-          />
-          <img 
-            src="/lovable-uploads/06b2535b-f663-4ea6-b230-7ca7df11862c.png" 
-            alt="Coastal town" 
-            className="rounded-lg h-40 object-cover animate-fade-in delay-100"
-          />
-          <img 
-            src="/lovable-uploads/0991307e-857f-4b1f-8a96-330c161bdeae.png" 
-            alt="Ocean view" 
-            className="rounded-lg h-40 object-cover animate-fade-in delay-150"
-          />
-        </div>
-        
-        <div className="space-y-6 text-lg">
-          <p className="animate-fade-in">
-            Hey there, I'm John Doe - a passionate developer, avid writer, and a connoisseur of awesome design.
-            Welcome to my corner of the digital world!
-          </p>
-          
-          <p className="animate-fade-in delay-75">
-            Since the early days of my journey, I've been captivated by the art of crafting exceptional digital
-            experiences. As a developer, I thrive on turning lines of code into functional and elegant solutions. My goal
-            is to not just create software, but to build digital marvels that seamlessly merge form and function.
-          </p>
-          
-          <p className="animate-fade-in delay-100">
-            But my passion extends beyond coding. With a mind brimming with ideas, I've
-            ventured into the realm of writing. I craft articles that unravel complex concepts to creative tales that
-            ignite the imagination. I weave words to inform, entertain, and inspire.
-          </p>
-          
-          <p className="animate-fade-in delay-150">
-            What sets me apart is my unwavering appreciation for design. I believe that aesthetics and usability go
-            hand in hand. My zeal for awesome design ensures that every project I undertake not only works flawlessly
-            under the hood but also looks stunning on the surface.
-          </p>
-          
-          <p className="animate-fade-in delay-200">
-            Through this website, I aim to share my journey with you. Whether you're a
-            fellow developer seeking solutions, a fellow writer in search of inspiration, or simply someone who
-            appreciates the finer aspects of design, there's something here for you.
-          </p>
-          
-          <p className="animate-fade-in delay-250">
-            Join me on this journey of bytes and narratives, logic and creativity, code and prose. Together, we can
-            explore the boundless possibilities of technology and storytelling, all while reveling in the sheer beauty of
-            thoughtful design.
-          </p>
-          
-          <p className="animate-fade-in delay-300">
-            Thank you for being here, and I can't wait to embark on this adventure with you.
-          </p>
+        <div className="grid md:grid-cols-2 gap-8 mb-12 animate-fade-in">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Code className="text-primary" size={20} />
+                Technical Skills
+              </h2>
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Programming Languages</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.programmingLanguages.map(lang => (
+                      <span key={lang} className="badge">{lang}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Tools & Technologies</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.tools.map(tool => (
+                      <span key={tool} className="badge">{tool}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Award className="text-primary" size={20} />
+                Achievements
+              </h2>
+              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                {personalInfo.achievements.map(achievement => (
+                  <li key={achievement}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Target className="text-primary" size={20} />
+                Goals
+              </h2>
+              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                {personalInfo.goals.map(goal => (
+                  <li key={goal}>{goal}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Brain className="text-primary" size={20} />
+                Core Strengths
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {personalInfo.strengths.map(strength => (
+                  <span key={strength} className="badge">{strength}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Heart className="text-primary" size={20} />
+                Interests & Hobbies
+              </h2>
+              <div className="grid gap-4">
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Professional Interests</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.interests.map(interest => (
+                      <span key={interest} className="badge">{interest}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Hobbies</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.hobbies.map(hobby => (
+                      <span key={hobby} className="badge">{hobby}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Star className="text-primary" size={20} />
+                Personality
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Key Traits</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.traits.map(trait => (
+                      <span key={trait} className="badge">{trait}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Areas for Growth</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {personalInfo.weaknesses.map(weakness => (
+                      <span key={weakness} className="badge">{weakness}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
