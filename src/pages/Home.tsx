@@ -31,16 +31,16 @@ const Home = () => {
             >
               👋
             </span>
-            <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hello! I'm Sahil</h1>
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold`}>Hi, I'm Sahil</h1>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground mb-6">
-            I'm thrilled to have you here. I'm a software developer and this is my portfolio website. 
-            Here you'll know about my journey as a software developer.
+            I'm a passionate Software Developer with 1 year of experience in web development, specializing in building modern, scalable applications using the MERN Stack and Next.js.
           </p>
           <p className="text-md md:text-lg text-muted-foreground mb-8">
-            With 11 months of experience in web development, I specialize in the MERN Stack 
-            (MongoDB, Express.js, React.js, Next.js and Node.js). I'm passionate about creating 
-            efficient, user-friendly, and visually appealing web applications.
+            I'm an innovative developer with hands-on expertise in AI integration, including AI automation & Agentic AI. I've improved application performance by 25% and designed backend architectures capable of handling 1,000+ concurrent users.
+          </p>
+          <p className="text-md md:text-lg text-muted-foreground mb-8">
+            I'm driven to create impactful, data-driven applications that are fast, user-friendly, and visually engaging.
           </p>
           
           <div className="flex flex-wrap gap-4">
