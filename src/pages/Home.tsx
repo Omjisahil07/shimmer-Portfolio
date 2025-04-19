@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
@@ -13,7 +14,7 @@ const Home = () => {
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const profileImageSrc = "/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png";
   
-  const recentProjects = projects.slice(0, 2);
+  const featuredProjects = projects.filter(project => project.featured);
   
   const goToProjectDetail = (projectId: number) => {
     navigate(`/project/${projectId}`);
@@ -58,11 +59,11 @@ const Home = () => {
         <section className="animate-fade-in">
           <h2 className="section-title">
             <Briefcase size={24} className="text-primary" />
-            Recent Projects
+            Featured Projects
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {recentProjects.map((project) => (
+            {featuredProjects.map((project) => (
               <div 
                 key={project.id} 
                 onClick={() => goToProjectDetail(project.id)}
@@ -71,12 +72,12 @@ const Home = () => {
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-40 object-cover"
+                  className="w-full h-40 object-cover rounded-t-lg"
                 />
                 <div className="p-4">
                   <h3 className="font-bold mb-1">{project.title}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <span key={tech} className="badge">{tech}</span>
                     ))}
