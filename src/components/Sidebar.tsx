@@ -107,7 +107,7 @@ const Sidebar = () => {
           
           <div className="mt-6">
             <Button className="w-full" variant="outline" size="sm" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+              <a href="https://drive.google.com/file/d/1Znx5ZTwrTjOOQFWppauODj8_GU8DVZWs/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                 <ExternalLink size={16} />
                 Read Resume
               </a>

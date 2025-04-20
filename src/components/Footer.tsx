@@ -29,7 +29,7 @@ const Footer = () => {
             </a>
           </Button>
           <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="https://drive.google.com/file/d/1Znx5ZTwrTjOOQFWppauODj8_GU8DVZWs/view?usp=sharing" target="_blank" rel="noopener noreferrer">
               <ExternalLink size={16} />
               <span>Resume</span>
             </a>
