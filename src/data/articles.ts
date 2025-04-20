@@ -1,4 +1,3 @@
-
 export type Article = {
   id: number;
   title: string;
@@ -6,6 +5,10 @@ export type Article = {
   image: string;
   tags: string[];
   date: string;
+  content: {
+    paragraphs: string[];
+    keyPoints: string[];
+  };
 };
 
 export const articles: Article[] = [
@@ -13,9 +16,22 @@ export const articles: Article[] = [
     id: 1,
     title: "Writing Smart UIs with AI: Auto-Suggest with OpenAI & React",
     description: "Learn how to integrate OpenAI's API with React to create intelligent auto-suggestions in forms, search boxes, and beyond. Boost UX with just a few lines of code.",
-    image: "https://unsplash.com/photos/5QgIuuBxKwM",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     tags: ["AI", "React", "OpenAI"],
     date: "April 25, 2025",
+    content: {
+      paragraphs: [
+        "Building intelligent user interfaces has never been more accessible thanks to OpenAI's powerful language models. In this guide, we'll explore how to create a smart auto-suggest component that leverages the GPT API to provide context-aware suggestions in real-time.",
+        "We'll start by setting up a React application with TypeScript and implementing a custom hook that manages the communication with OpenAI's API. This approach ensures clean separation of concerns and makes our code more maintainable.",
+        "The integration process involves careful prompt engineering to ensure relevant suggestions and optimal performance. We'll implement debouncing to prevent excessive API calls and add error handling to ensure a smooth user experience."
+      ],
+      keyPoints: [
+        "Learn to integrate OpenAI's API with React components efficiently",
+        "Implement debouncing and error handling for robust performance",
+        "Create reusable hooks for AI-powered features",
+        "Optimize API usage and manage response caching"
+      ]
+    }
   },
   {
     id: 2,
@@ -24,6 +40,18 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/GFrBMipOd_E",
     tags: ["Node.js", "LangChain", "AI", "Backend"],
     date: "May 2, 2025",
+    content: {
+      paragraphs: [
+        "Building an AI-powered resume matcher is a complex task that requires a deep understanding of natural language processing and machine learning. In this guide, we'll explore how to use LangChain and OpenAI to create a robust system that can accurately classify resumes based on their content.",
+        "We'll start by setting up a Node.js application and installing the necessary dependencies. Then, we'll use LangChain to define a prompt that can be used to extract relevant information from resumes. Finally, we'll integrate OpenAI's API to generate predictions and evaluate the accuracy of our model."
+      ],
+      keyPoints: [
+        "Build an AI-powered resume matcher using LangChain and OpenAI",
+        "Extract relevant information from resumes using natural language processing",
+        "Evaluate the accuracy of your model and make improvements",
+        "Deploy your system to production and monitor its performance"
+      ]
+    }
   },
   {
     id: 3,
@@ -32,6 +60,18 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/tE6th1h6Bfk",
     tags: ["Next.js", "Architecture", "React"],
     date: "May 10, 2025",
+    content: {
+      paragraphs: [
+        "Next.js is a popular framework for building server-side rendered React applications. In this guide, we'll explore some of the most common patterns for structuring your Next.js applications, including layout components, dynamic routing, and context providers.",
+        "Layout components allow you to define reusable UI components that can be used across multiple pages. Dynamic routing enables you to create pages that are generated at runtime based on user input or other criteria. Context providers provide a way to share data between components without having to pass props through multiple levels of the component tree."
+      ],
+      keyPoints: [
+        "Learn scalable patterns for structuring Next.js applications",
+        "Use layout components to create reusable UI components",
+        "Implement dynamic routing to generate pages at runtime",
+        "Use context providers to share data between components"
+      ]
+    }
   },
   {
     id: 4,
@@ -40,6 +80,18 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/lp40q07DIe0",
     tags: ["Tailwind CSS", "ShadCN UI", "UI/UX"],
     date: "May 16, 2025",
+    content: {
+      paragraphs: [
+        "Tailwind CSS is a utility-first CSS framework that allows you to build responsive and accessible user interfaces quickly. In this guide, we'll explore how to combine Tailwind CSS with ShadCN UI to create stunning, modern admin dashboards.",
+        "ShadCN UI is a set of React components that provide a consistent and modern design language. By combining Tailwind CSS with ShadCN UI, you can create a cohesive and visually appealing dashboard that meets the needs of your users."
+      ],
+      keyPoints: [
+        "Combine Tailwind CSS and ShadCN UI to build modern admin dashboards",
+        "Use Tailwind CSS to create responsive and accessible UI components",
+        "Use ShadCN UI to provide a consistent and modern design language",
+        "Implement dark mode and layout systems for a better user experience"
+      ]
+    }
   },
   {
     id: 5,
@@ -48,6 +100,18 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/i8va4bOAoY0",
     tags: ["Security", "Next.js", "JWT", "Backend"],
     date: "May 23, 2025",
+    content: {
+      paragraphs: [
+        "Building a secure full-stack application is a critical aspect of any web development project. In this guide, we'll explore how to implement role-based routing, protected pages, and JWT authentication in a Next.js + Node.js app.",
+        "Role-based routing allows you to define different access levels for different users, ensuring that only authorized users can access certain parts of your application. Protected pages prevent unauthorized access to sensitive data, while JWT authentication provides a secure way to authenticate users and manage their sessions."
+      ],
+      keyPoints: [
+        "Implement role-based routing, protected pages, and JWT authentication in Next.js + Node.js",
+        "Ensure secure access to your application using role-based routing",
+        "Protect sensitive data using protected pages and JWT authentication",
+        "Monitor your application for security vulnerabilities and make improvements"
+      ]
+    }
   },
   {
     id: 6,
@@ -56,6 +120,19 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/MJ_sI8xLdNM",
     tags: ["AI", "React", "OpenAI", "Productivity"],
     date: "May 30, 2025",
+    content: {
+      paragraphs: [
+        "Building an AI job description generator is a challenging task that requires a deep understanding of natural language processing and machine learning. In this guide, we'll explore how to use OpenAI's API to create a tool that can generate job descriptions based on user input.",
+        "We'll start by setting up a React application with TypeScript and implementing a custom hook that manages the communication with OpenAI's API. This approach ensures clean separation of concerns and makes our code more maintainable.",
+        "The integration process involves careful prompt engineering to ensure relevant job descriptions and optimal performance. We'll implement debouncing to prevent excessive API calls and add error handling to ensure a smooth user experience."
+      ],
+      keyPoints: [
+        "Learn to integrate OpenAI's API with React components efficiently",
+        "Implement debouncing and error handling for robust performance",
+        "Create reusable hooks for AI-powered features",
+        "Optimize API usage and manage response caching"
+      ]
+    }
   },
   {
     id: 7,
@@ -64,6 +141,17 @@ export const articles: Article[] = [
     image: "https://unsplash.com/photos/JJPqavJBy_k",
     tags: ["Node.js", "Express", "Backend", "DevOps"],
     date: "June 5, 2025",
+    content: {
+      paragraphs: [
+        "Rate limiting is a critical aspect of building a reliable and scalable backend. In this guide, we'll explore some of the most common rate limiting strategies using Express.js middleware.",
+        "Rate limiting can be used to prevent abuse of your API, such as denial-of-service attacks or excessive requests from a single user. By implementing rate limiting, you can ensure that your backend can handle a large number of requests without crashing or becoming unresponsive."
+      ],
+      keyPoints: [
+        "Explore common rate limiting strategies using Express.js middleware",
+        "Implement rate limiting to prevent abuse of your API",
+        "Ensure your backend can handle a large number of requests",
+        "Monitor your application for rate limiting violations and make improvements"
+      ]
+    }
   },
 ];
-

@@ -5,12 +5,12 @@ import Layout from '@/components/Layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { articles } from '@/data/articles';
+import { Article, articles } from '@/data/articles';
 
 const ArticleDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [article, setArticle] = useState<any>(null);
+  const [article, setArticle] = useState<Article | null>(null);
   
   useEffect(() => {
     if (id) {
@@ -58,21 +58,15 @@ const ArticleDetail = () => {
             <p className="text-lg text-muted-foreground mb-8">{article.description}</p>
             
             <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
+              {article.content.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
               <h2>Key Takeaways</h2>
               <ul>
-                <li>First important point about this topic</li>
-                <li>Second critical concept to understand</li>
-                <li>Third insight that readers should remember</li>
+                {article.content.keyPoints.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
               </ul>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
             </div>
           </div>
           
