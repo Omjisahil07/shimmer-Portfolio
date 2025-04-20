@@ -16,7 +16,7 @@ export const articles: Article[] = [
     id: 1,
     title: "Writing Smart UIs with AI: Auto-Suggest with OpenAI & React",
     description: "Learn how to integrate OpenAI's API with React to create intelligent auto-suggestions in forms, search boxes, and beyond. Boost UX with just a few lines of code.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop",
     tags: ["AI", "React", "OpenAI"],
     date: "April 25, 2025",
     content: {
@@ -37,7 +37,7 @@ export const articles: Article[] = [
     id: 2,
     title: "How I Built an AI-Powered Resume Matcher with Node.js & LangChain",
     description: "A behind-the-scenes look at building an AI resume classifier using LangChain, OpenAI, and Node.js. From prompt engineering to response handling.",
-    image: "https://unsplash.com/photos/GFrBMipOd_E",
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop",
     tags: ["Node.js", "LangChain", "AI", "Backend"],
     date: "May 2, 2025",
     content: {
@@ -57,7 +57,7 @@ export const articles: Article[] = [
     id: 3,
     title: "Component Patterns in Next.js: Clean Architecture for Scale",
     description: "Discover scalable patterns for structuring your Next.js applications. Learn when to use layout components, dynamic routing, and context providers.",
-    image: "https://unsplash.com/photos/tE6th1h6Bfk",
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop",
     tags: ["Next.js", "Architecture", "React"],
     date: "May 10, 2025",
     content: {
@@ -77,7 +77,7 @@ export const articles: Article[] = [
     id: 4,
     title: "Tailwind CSS × ShadCN UI: Building Modern Dashboards",
     description: "How to combine Tailwind CSS and ShadCN UI to build stunning, responsive admin dashboards. Includes tips on dark mode, layout systems, and accessibility.",
-    image: "https://unsplash.com/photos/lp40q07DIe0",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop",
     tags: ["Tailwind CSS", "ShadCN UI", "UI/UX"],
     date: "May 16, 2025",
     content: {
@@ -97,7 +97,7 @@ export const articles: Article[] = [
     id: 5,
     title: "Secure Your Full-Stack App with JWT & Role-Based Routing in Next.js",
     description: "A step-by-step guide on implementing role-based routing, protected pages, and JWT authentication in a Next.js + Node.js app.",
-    image: "https://unsplash.com/photos/i8va4bOAoY0",
+    image: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop",
     tags: ["Security", "Next.js", "JWT", "Backend"],
     date: "May 23, 2025",
     content: {
@@ -117,7 +117,7 @@ export const articles: Article[] = [
     id: 6,
     title: "How to Build an AI Job Description Generator with OpenAI & React",
     description: "Learn how I built an intelligent tool that writes job descriptions using AI. From prompt crafting to integrating results into a form builder.",
-    image: "https://unsplash.com/photos/MJ_sI8xLdNM",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
     tags: ["AI", "React", "OpenAI", "Productivity"],
     date: "May 30, 2025",
     content: {
@@ -138,7 +138,7 @@ export const articles: Article[] = [
     id: 7,
     title: "API Rate Limiting in Node.js: Protect Your Backend Like a Pro",
     description: "Explore common rate limiting strategies using Express.js middleware. Improve your backend reliability while avoiding abuse.",
-    image: "https://unsplash.com/photos/JJPqavJBy_k",
+    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1974&auto=format&fit=crop",
     tags: ["Node.js", "Express", "Backend", "DevOps"],
     date: "June 5, 2025",
     content: {
@@ -153,5 +153,5 @@ export const articles: Article[] = [
         "Monitor your application for rate limiting violations and make improvements"
       ]
     }
-  },
+  }
 ];

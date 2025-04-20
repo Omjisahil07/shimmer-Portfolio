@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import { User, Code, Award, Target, Brain, Heart, Star, Briefcase, GraduationCap, Wrench, Users } from 'lucide-react';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 const About = () => {
   const personalInfo = {
@@ -56,9 +57,48 @@ const About = () => {
     }
   };
 
+  const imageGallery = [
+    {
+      url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop",
+      title: "Development"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+      title: "Planning"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop",
+      title: "Strategy"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop",
+      title: "Innovation"
+    }
+  ];
+
   return (
     <Layout title="About">
       <div className="max-w-4xl mx-auto">
+        {/* Hero Image Gallery */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {imageGallery.map((image, index) => (
+            <HoverCard key={index}>
+              <HoverCardTrigger>
+                <div className="relative h-[200px] overflow-hidden rounded-xl border border-border/40 bg-background hover:border-border/80 transition-all duration-300">
+                  <img 
+                    src={image.url} 
+                    alt={image.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-auto">
+                <p className="font-medium">{image.title}</p>
+              </HoverCardContent>
+            </HoverCard>
+          ))}
+        </div>
+
         <h1 className="section-title mb-8">
           <User size={24} className="text-primary" />
           About Me
