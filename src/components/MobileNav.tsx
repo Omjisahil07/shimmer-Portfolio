@@ -28,7 +28,7 @@ const MobileNav = () => {
             />
           </div>
           <div>
-            <h3 className="font-bold text-base">John Doe</h3>
+            <h3 className="font-bold text-base">Sahil Tiwari</h3>
             <p className="text-xs text-muted-foreground">Developer</p>
           </div>
         </Link>
