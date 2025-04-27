@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { navItems } from './Sidebar';
-import ProfileImageDialog from './ProfileImageDialog';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { navItems } from "./Sidebar";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const location = useLocation();
-  const profileImageSrc = "/lovable-uploads/a9add63b-a8cb-4ec4-a055-564ebc2f3a98.png";
+  const profileImageSrc = "/images/PP.jpg";
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -17,13 +16,13 @@ const MobileNav = () => {
     <>
       <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b p-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <div 
+          <div
             className="w-8 h-8 rounded-full overflow-hidden border-2 border-sidebar-primary cursor-pointer"
             onClick={() => setImageDialogOpen(true)}
           >
-            <img 
+            <img
               src={profileImageSrc}
-              alt="John Doe" 
+              alt="John Doe"
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -34,11 +33,15 @@ const MobileNav = () => {
           </div>
         </Link>
 
-        <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle menu">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </Button>
       </div>
-
       {isOpen && (
         <div className="fixed inset-0 z-40 bg-background mt-16 animate-fade-in">
           <nav className="p-4">
@@ -48,9 +51,9 @@ const MobileNav = () => {
                   <Link
                     to={item.path}
                     className={`flex items-center gap-2 p-3 rounded-md transition-colors ${
-                      location.pathname === item.path 
-                        ? 'bg-sidebar-accent text-foreground font-medium' 
-                        : 'hover:bg-sidebar-accent/50'
+                      location.pathname === item.path
+                        ? "bg-sidebar-accent text-foreground font-medium"
+                        : "hover:bg-sidebar-accent/50"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -64,13 +67,6 @@ const MobileNav = () => {
         </div>
       )}
       <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <ProfileImageDialog 
-        open={imageDialogOpen} 
-        onOpenChange={setImageDialogOpen} 
-        imageSrc={profileImageSrc}
-        name="John Doe"
-      />
     </>
   );
 };

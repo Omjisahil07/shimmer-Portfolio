@@ -17,7 +17,7 @@ const Footer = () => {
         
         <div className="flex items-center gap-2 text-sm">
           <span className="text-muted-foreground flex items-center">
-            Built with <Heart size={14} className="mx-1 text-red-500" /> using React
+            Built with <Heart size={14} className="mx-1 text-red-500" />
           </span>
         </div>
         
