@@ -155,7 +155,7 @@ export const articles: Article[] = [
     image:
       "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1974&auto=format&fit=crop",
     tags: ["Node.js", "Express", "Backend", "DevOps"],
-    date: "April 38, 2025",
+    date: "April 28, 2025",
     content: {
       paragraphs: [
         "Rate limiting is a critical aspect of building a reliable and scalable backend. In this guide, we'll explore some of the most common rate limiting strategies using Express.js middleware.",
