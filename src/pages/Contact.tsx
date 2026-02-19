@@ -33,7 +33,7 @@ const Contact = () => {
       };
 
       const response = await fetch(
-        "https://myportfolio-78md.onrender.com/api/v1/createUser",
+        "https://peachpuff-manatee-320961.hostingersite.com/api/v1/createUser",
         options
       );
       const res = await response.json();
